@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
 import 'package:soundboard/pages/main.dart';
+import 'package:soundboard/pages/sounds/main.dart';
 import 'package:soundboard/redux/core/app/model.dart';
 import 'package:soundboard/redux/core/app/reducers.dart';
 
@@ -36,6 +37,9 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.green,
         ),
         home: HomePage(),
+        routes: {
+          '/sounds': (BuildContext context) => SoundsPage(),
+        },
       ),
     );
   }

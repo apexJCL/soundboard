@@ -24,6 +24,7 @@ class HomePageState extends State<HomePage>
   Animation<Color> _backgroundColorTransition;
   Animation<Color> _appBarColorTransition;
   Animation<Color> _titleColorTransition;
+  int _activeIndex = 0;
 
   @override
   void initState() {
@@ -81,37 +82,49 @@ class HomePageState extends State<HomePage>
             onPressed: vm.toggleDarkMode,
           ),
         ],
+        brightness: vm.darkMode ? Brightness.dark : Brightness.light,
       ),
       backgroundColor: _backgroundColorTransition.value,
-      body: Padding(
-        padding: const EdgeInsets.all(6.0),
-        child: GridView(
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            crossAxisSpacing: 6.0,
-            mainAxisSpacing: 6.0,
-            childAspectRatio: 1.0,
+      drawer: Theme(
+        data: ThemeData(
+          brightness: vm.darkMode ? Brightness.dark : Brightness.light,
+        ),
+        child: Drawer(
+          semanticLabel: 'Menu',
+          child: ListView(
+            children: <Widget>[
+              DrawerHeader(
+                padding: const EdgeInsets.all(
+                  0.0,
+                ),
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage(
+                      'assets/header.jpg',
+                    ),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                child: Container(
+                  padding: const EdgeInsets.all(8.0),
+                  color: vm.darkMode ? Color(0x99000000) : Color(0x99FFFFFF),
+                ),
+              ),
+              ListTile(
+                leading: Icon(Icons.home),
+                title: Text('Inicio'),
+              ),
+              ListTile(
+                leading: Icon(Icons.list),
+                title: Text('Sonidos'),
+                onTap: () => Navigator.of(context).pushNamed('/sounds'),
+              ),
+              ListTile(
+                leading: Icon(Icons.info),
+                title: Text('Acerca de'),
+              ),
+            ],
           ),
-          children: <Widget>[
-            TouchySticker(
-              imageAssetPath: 'assets/wena.png',
-              onTap: () {
-                HomePage.player.play(
-                  'wena.mp3',
-                  volume: 1.0,
-                );
-              },
-            ),
-            TouchySticker(
-              imageAssetPath: 'assets/karmona.png',
-              onTap: () {
-                HomePage.player.play(
-                  'karmona_saquen_las_guamas.mp3',
-                  volume: 1.0,
-                );
-              },
-            ),
-          ],
         ),
       ),
     );

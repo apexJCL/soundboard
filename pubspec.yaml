@@ -29,6 +29,7 @@ flutter:
 
 
   assets:
+    - assets/header.jpg
     - assets/wena.mp3
     - assets/wena.png
     - assets/karmona_saquen_las_guamas.mp3
