@@ -12,6 +12,7 @@ class HomePage extends StatefulWidget {
   HomePageState createState() {
     player.loadAll([
       'wena.mp3',
+      'karmona_saquen_las_guamas.mp3',
     ]);
     return new HomePageState();
   }
@@ -93,13 +94,23 @@ class HomePageState extends State<HomePage>
           ),
           children: <Widget>[
             TouchySticker(
-                imageAssetPath: 'assets/wena.png',
-                onTap: () {
-                  HomePage.player.play(
-                    'wena.mp3',
-                    volume: 1.0,
-                  );
-                }),
+              imageAssetPath: 'assets/wena.png',
+              onTap: () {
+                HomePage.player.play(
+                  'wena.mp3',
+                  volume: 1.0,
+                );
+              },
+            ),
+            TouchySticker(
+              imageAssetPath: 'assets/karmona.png',
+              onTap: () {
+                HomePage.player.play(
+                  'karmona_saquen_las_guamas.mp3',
+                  volume: 1.0,
+                );
+              },
+            ),
           ],
         ),
       ),

@@ -31,6 +31,8 @@ flutter:
   assets:
     - assets/wena.mp3
     - assets/wena.png
+    - assets/karmona_saquen_las_guamas.mp3
+    - assets/karmona.png
 
   # To add assets to your application, add an assets section, like this:
   # assets:
